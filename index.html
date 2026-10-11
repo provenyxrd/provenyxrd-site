@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProvenyxRD — Governance you can verify, not just trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #12161c;
+    --bg-panel: #181d24;
+    --text: #ededE6;
+    --text-dim: #9ba3ad;
+    --accent: #e2953a;
+    --accent-dim: #b97a2e;
+    --line: #2a313b;
+    --confirmed: #5fa779;
+
+    --font-display: 'Archivo', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- Nav ---------- */
+
+  .nav { border-bottom: 1px solid var(--line); }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0;
+  }
+
+  .nav-links { display: flex; gap: 28px; }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+
+  .wordmark .suffix {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--accent);
+    margin-left: 2px;
+    vertical-align: super;
+  }
+
+  .nav-link {
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--text-dim);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .nav-link:hover { color: var(--text); border-color: var(--accent); }
+
+  /* ---------- Hero ---------- */
+
+  .hero { padding: 96px 0 88px; }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(34px, 4.4vw, 52px);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin: 0 0 24px;
+    max-width: 16ch;
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 48ch;
+    margin: 0 0 36px;
+  }
+
+  .cta-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+
+  .cta {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--accent-dim);
+    padding-bottom: 3px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .cta:hover { color: var(--text); border-color: var(--text); }
+
+  .rev-tag { font-family: var(--font-mono); font-size: 13px; color: var(--text-dim); }
+
+  .hero-art {
+  width: 81%;
+  height: auto;
+  transform: translateX(110px);
+}
+
+  /* ---------- Philosophy band ---------- */
+
+  .philosophy {
+    background: var(--bg-panel);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 80px 0;
+  }
+
+  .philosophy h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(24px, 3vw, 32px);
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    max-width: 20ch;
+  }
+
+  .philosophy p {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  /* ---------- Principles ---------- */
+
+  .principles { padding: 88px 0; }
+
+  .principles h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(22px, 2.6vw, 28px);
+    margin: 0 0 48px;
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px 32px;
+  }
+
+  @media (max-width: 900px) {
+    .principles-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .principles-grid { grid-template-columns: 1fr; }
+  }
+
+  .principle-item { border-top: 1px solid var(--line); padding-top: 20px; }
+
+  .principle-item h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0 0 10px;
+  }
+
+  .principle-item p {
+    font-size: 15px;
+    color: var(--text-dim);
+    margin: 0;
+    max-width: 30ch;
+  }
+
+  /* ---------- Contact ---------- */
+
+  .contact { border-top: 1px solid var(--line); padding: 88px 0 96px; }
+
+  .contact h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(22px, 2.6vw, 28px);
+    margin: 0 0 16px;
+  }
+
+  .contact p { color: var(--text-dim); max-width: 48ch; margin: 0 0 28px; }
+  .contact .cta { font-size: 19px; }
+
+  /* ---------- Footer ---------- */
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--text-dim);
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 780px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-art { max-width: 320px; margin: 0 auto; transform: none; }
+    .container { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="wordmark">Provenyx<span class="suffix">RD</span></a>
+    <div class="nav-links">
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <h1>Governance you can verify, not just trust.</h1>
+      <p>ProvenyxRD designs deterministic, immutable systems &mdash; in software and hardware &mdash; where AI does the implementation work, and independent verification decides what's true.</p>
+      <div class="cta-row">
+        <a class="cta" href="mailto:hello@provenyxrd.com">Get in touch</a>
+        <span class="rev-tag">Active R&amp;D. Spec revision 0.1.</span>
+      </div>
+    </div>
+
+    <img class="hero-art" src="provenyxrd-mark-cropped.png" width="576" height="686"
+         alt="ProvenyxRD mark: an isometric letter P inside a hexagonal frame, with one connection node highlighted as confirmed.">
+  </div>
+</section>
+
+<section class="philosophy">
+  <div class="container">
+    <h2>Nothing is governed until it's confirmed.</h2>
+    <p>Software can report compliance. Hardware can fail silently. Only an independent, immutable record can prove what actually happened. ProvenyxRD systems are built around that principle &mdash; deterministic behavior, immutable state, and AI used as an implementation layer, never as the source of truth.</p>
+  </div>
+</section>
+
+<section class="principles">
+  <div class="container">
+    <h2>Principles</h2>
+    <div class="principles-grid">
+      <div class="principle-item">
+        <h3>Immutability</h3>
+        <p>Once state is recorded, it can't be quietly rewritten. Any change is visible, timestamped, and attributable.</p>
+      </div>
+      <div class="principle-item">
+        <h3>Determinism</h3>
+        <p>The same input produces the same output, every time &mdash; no silent randomness standing in for a decision that should be traceable.</p>
+      </div>
+      <div class="principle-item">
+        <h3>AI governance</h3>
+        <p>Systems that act with real consequences need oversight that sits outside the system itself &mdash; not self-reported compliance.</p>
+      </div>
+      <div class="principle-item">
+        <h3>Systems thinking</h3>
+        <p>Complex problems get solved as whole systems, with AI as the implementation layer &mdash; not as an opaque decision-maker.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <h2>Work with us</h2>
+    <p>Open to conversations with manufacturers, insurers, and partners building toward verifiable systems.</p>
+    <a class="cta" href="mailto:hello@provenyxrd.com">hello@provenyxrd.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>&copy; 2026 ProvenyxRD</span>
+    <span>provenyxrd.com</span>
+  </div>
+</footer>
+
+</body>
+</html>
